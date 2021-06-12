@@ -24,6 +24,6 @@ Route::get('/home', function () {
 
 Route::get('/about', function () {
     return view('about');
-})->middleware('token');
+});
 
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
