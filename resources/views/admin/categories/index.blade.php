@@ -50,7 +50,7 @@
                             <tr>
                                 <th scope="row">{{ $category->id }}</th>
                                 <td>{{ $category->name }}</td>
-                                <td>{{ $category->user_id }}</td>
+                                <td>{{ $category->user->name }}</td>
                                 <td>{{ $category->created_at->diffForHumans() }}</td>
                             </tr>
                             @endforeach
