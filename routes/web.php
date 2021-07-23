@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,12 @@ Route::get('/home', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
+// Categories routes
+Route::get('/categories', [CategoryController::class, 'index'])
+    ->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])
+    ->name('categories.store');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
