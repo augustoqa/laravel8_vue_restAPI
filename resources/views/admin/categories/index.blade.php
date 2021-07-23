@@ -40,6 +40,8 @@
                             <tr>
                                 <th scope="col">SL No</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Created At</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -48,11 +50,16 @@
                             <tr>
                                 <th scope="row">{{ $category->id }}</th>
                                 <td>{{ $category->name }}</td>
+                                <td>{{ $category->user_id }}</td>
+                                <td>{{ $category->created_at->diffForHumans() }}</td>
                             </tr>
                             @endforeach
 
                             </tbody>
                         </table>
+                        <div class="card-footer">
+                            {{ $categories->links() }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
