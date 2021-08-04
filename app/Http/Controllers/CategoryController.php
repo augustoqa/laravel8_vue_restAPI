@@ -29,4 +29,23 @@ class CategoryController extends Controller
             ->route('categories.index')
             ->with('success', 'Category inserted successfully.');
     }
+
+    public function edit(Category $category)
+    {
+        return view('admin.categories.edit', compact('category'));
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        $data = $request->validate([
+            'name' => 'required|min:3|max:255|unique:categories',
+        ]);
+
+        $category->name = $data['name'];
+        $category->save();
+
+        return redirect()
+            ->route('categories.index')
+            ->with('success', 'Category updated successfully');
+    }
 }

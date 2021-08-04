@@ -33,6 +33,10 @@ Route::get('/categories', [CategoryController::class, 'index'])
     ->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])
     ->name('categories.store');
+Route::get('/categories/{category}', [CategoryController::class, 'edit'])
+    ->name('categories.edit');
+Route::put('/categories/{category}', [CategoryController::class, 'update'])
+    ->name('categories.update');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
