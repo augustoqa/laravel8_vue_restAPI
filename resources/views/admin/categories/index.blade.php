@@ -55,7 +55,11 @@
                                 <td>{{ $category->created_at->diffForHumans() }}</td>
                                 <td>
                                     <a href="{{ route('categories.edit', $category) }}" class="btn btn-info text-white">Edit</a>
-                                    <a href="" class="btn btn-danger">Edit</a>
+
+                                    <form method="post" action="{{ route('categories.delete', $category) }}" class="d-inline">
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -85,6 +89,50 @@
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trash Part -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Trash List</div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">SL No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($trashCategories as $category)
+                            <tr>
+                                <th scope="row">{{ $category->id }}</th>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->user->name }}</td>
+                                <td>{{ $category->created_at->diffForHumans() }}</td>
+                                <td>
+                                    <a href="{{ route('categories.edit', $category) }}" class="btn btn-info text-white">Edit</a>
+                                    <a href="" class="btn btn-danger">Edit</a>
+                                </td>
+                            </tr>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                        <div class="card-footer">
+                            {{ $trashCategories->links() }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    
                 </div>
             </div>
         </div>

@@ -10,8 +10,14 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.categories.index')
-            ->with('categories', Category::latest()->paginate(5));
+        $categories = Category::latest()
+            ->paginate(5);
+
+        $trashCategories = Category::onlyTrashed()
+            ->latest()
+            ->paginate(3);
+
+        return view('admin.categories.index', compact('categories', 'trashCategories'));
     }
 
     public function store(Request $request)
@@ -47,5 +53,14 @@ class CategoryController extends Controller
         return redirect()
             ->route('categories.index')
             ->with('success', 'Category updated successfully');
+    }
+
+    public function delete(Category $category)
+    {
+        $category->delete();
+
+        return redirect()
+            ->back()
+            ->with('success', 'Category deleted successfully');
     }
 }
