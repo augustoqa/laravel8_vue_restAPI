@@ -118,8 +118,18 @@
                                 <td>{{ $category->user->name }}</td>
                                 <td>{{ $category->created_at->diffForHumans() }}</td>
                                 <td>
-                                    <a href="{{ route('categories.edit', $category) }}" class="btn btn-info text-white">Edit</a>
-                                    <a href="" class="btn btn-danger">Edit</a>
+                                    <a 
+                                        href="{{ route('categories.restore', $category) }}" 
+                                        class="btn btn-info text-white"
+                                    >
+                                        Restore
+                                    </a>
+                                    <a 
+                                        href="{{ route('categories.destroy', $category) }}" 
+                                        class="btn btn-danger"
+                                    >
+                                        Delete
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

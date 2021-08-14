@@ -39,6 +39,10 @@ Route::put('/categories/{category}', [CategoryController::class, 'update'])
     ->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'delete'])
     ->name('categories.delete');
+Route::get('/categories/restore/{category}', [CategoryController::class, 'restore'])
+    ->name('categories.restore');
+Route::get('/categories/destroy/{category}', [CategoryController::class, 'destroy'])
+    ->name('categories.destroy');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
