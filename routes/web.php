@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,11 @@ Route::get('/categories/restore/{category}', [CategoryController::class, 'restor
     ->name('categories.restore');
 Route::get('/categories/destroy/{category}', [CategoryController::class, 'destroy'])
     ->name('categories.destroy');
+
+// Brands routes
+Route::get('/brands', [BrandController::class, 'index'])
+    ->name('brands.index');
+
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
