@@ -48,6 +48,8 @@ Route::get('/categories/destroy/{category}', [CategoryController::class, 'destro
 // Brands routes
 Route::get('/brands', [BrandController::class, 'index'])
     ->name('brands.index');
+Route::post('/brands', [BrandController::class, 'store'])
+    ->name('brands.store');
 
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

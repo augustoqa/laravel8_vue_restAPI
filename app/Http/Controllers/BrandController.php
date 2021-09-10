@@ -13,4 +13,21 @@ class BrandController extends Controller
 
         return view('admin.brands.index', compact('brands'));
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|unique:brands|min:4',
+            'image' => 'required|mimes:jpg,jpeg,png',
+        ]);
+
+        $path = $request->file('image')->store('images/brand', 'public');
+
+        Brand::create([
+            'name' => $request->name,
+            'image' => $path,
+        ]);
+
+        return back()->with('success', 'Brand inserted successfully');
+    }
 }

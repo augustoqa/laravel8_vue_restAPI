@@ -51,7 +51,7 @@
                             <tr>
                                 <th scope="row">{{ $brand->id }}</th>
                                 <td>{{ $brand->name }}</td>
-                                <td>{{ $brand->image }}</td>
+                                <td><img src="{{ Storage::url($brand->image) }}" height="40" width="70" /></td>
                                 <td>{{ $brand->created_at->diffForHumans() }}</td>
                                 <td>
                                     <a href="" class="btn btn-info text-white">Edit</a>
@@ -75,16 +75,16 @@
                     <div class="card">
                         <div class="card-header">Add Brand</div>
                         <div class="card-body">
-                            <form action="{{ route('categories.store') }}" method="post">
+                            <form action="{{ route('brands.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group has-validation mb-3">
                                     <label for="name">Name</label>
-                                    <input 
-                                        type="text" 
-                                        name="name" 
-                                        value="{{ old('name') }}" 
-                                        class="form-control @error('name') is-invalid @enderror" 
-                                        id="name" 
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value="{{ old('name') }}"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        id="name"
                                         placeholder="Name">
 
                                     @error('name')
@@ -93,11 +93,11 @@
                                 </div>
                                 <div class="form-group has-validation mb-3">
                                     <label for="image">Image</label>
-                                    <input 
-                                        type="file" 
-                                        name="image" 
-                                        value="{{ old('image') }}" 
-                                        class="form-control @error('image') is-invalid @enderror" 
+                                    <input
+                                        type="file"
+                                        name="image"
+                                        value="{{ old('image') }}"
+                                        class="form-control @error('image') is-invalid @enderror"
                                         id="image">
 
                                     @error('image')
