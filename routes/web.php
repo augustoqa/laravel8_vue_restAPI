@@ -50,6 +50,10 @@ Route::get('/brands', [BrandController::class, 'index'])
     ->name('brands.index');
 Route::post('/brands', [BrandController::class, 'store'])
     ->name('brands.store');
+Route::get('/brands/{brand}/edit', [BrandController::class, 'edit'])
+    ->name('brands.edit');
+Route::patch('/brands/{brand}', [BrandController::class, 'update'])
+    ->name('brands.update');
 
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

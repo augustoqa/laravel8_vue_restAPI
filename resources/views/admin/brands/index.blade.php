@@ -54,7 +54,7 @@
                                 <td><img src="{{ Storage::url($brand->image) }}" height="40" width="70" /></td>
                                 <td>{{ $brand->created_at->diffForHumans() }}</td>
                                 <td>
-                                    <a href="" class="btn btn-info text-white">Edit</a>
+                                    <a href="{{ route('brands.edit', $brand) }}" class="btn btn-info text-white">Edit</a>
 
                                     <form method="post" action="" class="d-inline">
                                         @csrf @method('DELETE')
